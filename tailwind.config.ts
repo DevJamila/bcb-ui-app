@@ -11,6 +11,8 @@ const config: Config = {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        bcbgreen: "#3C896A",
+        bcbyellow: "#CACF85"
       },
     },
   },
