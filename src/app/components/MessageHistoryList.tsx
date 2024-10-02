@@ -13,7 +13,7 @@ export default async function MessageHistoryList(props:any) {
         {
           messages.reverse().map((m:any) => {
             return (
-              <MessageCard message={m} />
+              <MessageCard key={m.id} message={m} />
             )
           })
         }

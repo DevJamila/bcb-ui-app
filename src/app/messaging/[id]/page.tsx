@@ -1,9 +1,12 @@
-import MessageHistoryList from "../components/MessageHistoryList";
-import MessageInfoFormCard from "../components/MessageInfoFormCard";
-import UserInfoCard from "../components/UserInfoCard";
+"use client"
 
-async function getCustomer() {
-  const response = await fetch("http://localhost:8080/customers/3");
+import MessageHistoryList from "../../components/MessageHistoryList";
+import MessageInfoFormCard from "../../components/MessageInfoFormCard";
+import UserInfoCard from "../../components/UserInfoCard";
+import {useParams} from "next/navigation";
+
+async function getCustomer(phone:any) {
+  const response = await fetch("http://localhost:8080/customers/"+phone);
   return response.json();
 }
 
@@ -13,13 +16,16 @@ async function getMessageHistory() {
 }
 
 export default async function Messaging() {
+  const params = useParams();
+  console.log("PARAAAAAAAAAAAAMS");
+  console.log(params);
 
-  var customer = await getCustomer();
+  var customer = await getCustomer(params.id);
   var messages = await getMessageHistory();
 
   return (
     <main className="flex flex-col gap-y-8 w-full">
-      <h1 className="text-2xl">Hi
+      <h1 className="text-2xl text-center md:text-left">Hi
       <span className="font-bold text-bcbgreen"> {customer.name}</span>
       , send your messages quickly and easily. </h1>
 

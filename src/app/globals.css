@@ -19,6 +19,27 @@ body {
   transform: scale(1.1);
 }
 
+/* ============ SCROLLBAR ==================*/
+::-webkit-scrollbar {
+  @apply w-2.5 bg-stone-100;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  @apply bg-stone-100 rounded-full my-1;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  @apply bg-bcbyellow rounded-full;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-bcbgreen;
+}
+/* ==========================================*/
+
 
 @layer utilities {
   .text-balance {
