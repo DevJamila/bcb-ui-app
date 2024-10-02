@@ -8,7 +8,7 @@ export default async function UserInfoCard(props:any) {
 
   return (
     <div className="flex flex-col bg-stone-50 drop-shadow-lg px-12 py-8 rounded-lg gap-y-4">
-      <p className="text-xl font-bold">Sender information:</p>
+      <h2 className="text-xl font-bold">Sender information:</h2>
 
       <div className="grid grid-cols-2 gap-4">
         <div className="flex flex-col">
