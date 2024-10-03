@@ -43,6 +43,7 @@ export default function MessageInfoFormCard(props:any) {
     })
     .then(res => {
       res.data;
+      window.location.reload();
     })
     .catch(err => {
       console.log(err.response ? err.response.data : err.message);
