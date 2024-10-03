@@ -19,6 +19,10 @@ body {
   @apply w-full px-4 py-1 border border-bcbyellow rounded-lg;
 }
 
+.form-field textarea {
+  @apply w-full px-4 py-1 border border-bcbyellow rounded-lg;
+}
+
 /* ============ SCROLLBAR ==================*/
 ::-webkit-scrollbar {
   @apply w-2.5 bg-stone-100;
@@ -39,7 +43,6 @@ body {
   @apply bg-bcbgreen;
 }
 /* ==========================================*/
-
 
 @layer utilities {
   .text-balance {

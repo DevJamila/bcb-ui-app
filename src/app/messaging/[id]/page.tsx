@@ -21,13 +21,13 @@ export default function Messaging() {
   return (
     <main className="flex flex-col gap-y-8 w-full">
       <h1 className="text-2xl text-center md:text-left">Hi
-      <span className="font-bold text-bcbgreen"> {data ? data.name : ""} </span>
+      <span className="font-bold text-bcbgreen"> {data ? data.name : ""}</span>
       , send your messages quickly and easily. </h1>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
         { data && <UserInfoCard customer={data}/> }
         
-        <MessageInfoFormCard />
+        { data && <MessageInfoFormCard customerId={data.id}/> }
 
         { data && 
           <div className="col-span-1 lg:col-span-2">
