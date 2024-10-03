@@ -1,6 +1,6 @@
 import { maskPhone } from "../functions/phone";
 
-export default async function MessageInfoFormCard(props:any) {
+export default function MessageInfoFormCard(props:any) {
 
   
 

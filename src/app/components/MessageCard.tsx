@@ -1,7 +1,7 @@
 import { maskPhone } from "../functions/phone";
 import { maskTimestamp } from "../functions/timestamp";
 
-export default async function MessageCard(props:any) {
+export default function MessageCard(props:any) {
 
   const message = props.message;
 
@@ -31,7 +31,7 @@ export default async function MessageCard(props:any) {
         </div>
 
         <div className="flex gap-2">
-          <p>{maskTimestamp(message.requestTimestamp.toString())}</p>
+          <p>{maskTimestamp(message.requestTimestamp)}</p>
         </div>
       </div>
 

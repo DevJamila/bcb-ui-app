@@ -1,40 +1,40 @@
 "use client"
 
+import useSWR from "swr";
 import MessageHistoryList from "../../components/MessageHistoryList";
 import MessageInfoFormCard from "../../components/MessageInfoFormCard";
 import UserInfoCard from "../../components/UserInfoCard";
-import {useParams} from "next/navigation";
+import axios from "../../config/axiosConfig";
+import { useParams } from "next/navigation";
 
-async function getCustomer(phone:any) {
-  const response = await fetch("http://localhost:8080/customers/"+phone);
-  return response.json();
-}
+const baseUrl = process.env.NEXT_PUBLIC_CORE_APP_BASE_URL;
 
-async function getMessageHistory() {
-  const response = await fetch("http://localhost:8080/message/customer/2", { cache: "no-store" });
-  return response.json();
-}
+const customerFetcher = (url:string) => axios.get(url).then(res => res.data);
 
-export default async function Messaging() {
-  const params = useParams();
-  console.log("PARAAAAAAAAAAAAMS");
-  console.log(params);
+export default function Messaging() {
+  const { id } = useParams();
 
-  var customer = await getCustomer(params.id);
-  var messages = await getMessageHistory();
+  const customerURL = baseUrl+"/customers/"+id;
+
+  const { data } = useSWR(customerURL, customerFetcher);
 
   return (
     <main className="flex flex-col gap-y-8 w-full">
       <h1 className="text-2xl text-center md:text-left">Hi
-      <span className="font-bold text-bcbgreen"> {customer.name}</span>
+      <span className="font-bold text-bcbgreen"> {data ? data.name : ""} </span>
       , send your messages quickly and easily. </h1>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-        <UserInfoCard customer={customer}/>
+        { data && <UserInfoCard customer={data}/> }
+        
         <MessageInfoFormCard />
-        <div className="col-span-1 lg:col-span-2">
-          <MessageHistoryList messages={messages} />
-        </div>
+
+        { data && 
+          <div className="col-span-1 lg:col-span-2">
+            <MessageHistoryList customerId={data.id} />
+          </div> 
+        }
+        
       </div>
       
       

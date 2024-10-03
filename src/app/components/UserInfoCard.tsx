@@ -2,7 +2,7 @@ import { maskCNPJ } from "../functions/cnpj";
 import { maskCurrency } from "../functions/currency";
 import { maskPhone } from "../functions/phone";
 
-export default async function UserInfoCard(props:any) {
+export default function UserInfoCard(props:any) {
 
   const customer = props.customer;
 

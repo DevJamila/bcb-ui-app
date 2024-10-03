@@ -1,8 +1,18 @@
+import useSWR from "swr";
+import axios from "../config/axiosConfig";
 import MessageCard from "./MessageCard";
 
-export default async function MessageHistoryList(props:any) {
+const baseUrl = process.env.NEXT_PUBLIC_CORE_APP_BASE_URL;
 
-  const messages = props.messages;
+const messagesFetcher = (url:string) => axios.get(url).then(res => res.data);
+
+export default function MessageHistoryList(props:any) {
+
+  const customerId = props.customerId;
+
+  const messagesURL = baseUrl+"/message/customer/"+customerId;
+
+  const { data } = useSWR(messagesURL, messagesFetcher);
 
   return (
     <div className="flex flex-col bg-stone-50 drop-shadow-lg px-12 py-8 rounded-lg gap-y-4">
@@ -11,12 +21,12 @@ export default async function MessageHistoryList(props:any) {
       <div className="flex flex-col gap-4">
         
         {
-          messages.reverse().map((m:any) => {
+          data && data.map((m:any) => {
             return (
               <MessageCard key={m.id} message={m} />
             )
           })
-        }
+        } 
 
       </div>
       
