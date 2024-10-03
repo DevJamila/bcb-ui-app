@@ -1,0 +1,51 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  
+}
+
+body {
+  @apply bg-stone-100 text-stone-900;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.form-field {
+  @apply flex flex-col items-start gap-1
+}
+
+.form-field input {
+  @apply w-full px-4 py-1 border border-bcbyellow rounded-lg;
+}
+
+.form-field textarea {
+  @apply w-full px-4 py-1 border border-bcbyellow rounded-lg;
+}
+
+/* ============ SCROLLBAR ==================*/
+::-webkit-scrollbar {
+  @apply w-2.5 bg-stone-100;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  @apply bg-stone-100 rounded-full my-1;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  @apply bg-bcbyellow rounded-full;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-bcbgreen;
+}
+/* ==========================================*/
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
